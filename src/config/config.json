@@ -21,15 +21,7 @@
     "meta_image": "/images/og-image.png",
     "meta_description": "Bookworm Light Astro Blog Template"
   },
-
   "params": {
-    "contact_form_action": "#",
     "copyright": "Copyright © 2023 日本温泉百貨"
-  },
-
-  "contactinfo": {
-    "address": "355 S Grand Ave <br/> Los Angeles, CA 90071",
-    "email": "info@bookworm.org",
-    "phone": "+800 567 1234"
   }
 }

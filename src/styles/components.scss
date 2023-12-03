@@ -40,43 +40,6 @@
   }
 }
 
-// social icon style
-.social-icons {
-  @apply space-x-4;
-  li {
-    @apply inline-block;
-    a {
-      @apply block h-11 w-11 rounded-lg border border-light bg-transparent text-center text-white transition hover:border-primary hover:bg-primary;
-      svg {
-        @apply m-auto h-11 text-base;
-      }
-    }
-  }
-}
-
-.social-icons-simple {
-  @apply space-x-2;
-  li {
-    @apply inline-block;
-    a {
-      @apply block p-3 text-dark transition hover:text-primary;
-      svg {
-        @apply text-lg;
-      }
-    }
-  }
-}
-
-.social-share {
-  @apply space-x-1;
-  li {
-    @apply inline-block;
-    a {
-      @apply block p-3 transition transition duration-300 hover:text-primary;
-    }
-  }
-}
-
 // form style
 .form-input,
 .form-textarea {

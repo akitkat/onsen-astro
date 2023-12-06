@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "日本温泉百貨",
-    "base_url": "https://bookworm-light-astro.vercel.app",
+    "base_url": "todo",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png"
@@ -13,9 +13,9 @@
   },
 
   "metadata": {
-    "meta_author": "Themefisher",
+    "meta_author": "todo",
     "meta_image": "/images/og-image.png",
-    "meta_description": "Bookworm Light Astro Blog Template"
+    "meta_description": "todo"
   },
   "params": {
     "copyright": "Copyright © 2023 日本温泉百貨"

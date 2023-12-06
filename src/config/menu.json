@@ -3,43 +3,24 @@
     {
       "name": "Home",
       "url": "/"
-    },
-    {
-      "name": "Pages",
-      "url": "",
-      "hasChildren": true,
-      "children": [
-        {
-          "name": "Authors",
-          "url": "/authors"
-        },
-        {
-          "name": "Categories",
-          "url": "/categories"
-        },
-        {
-          "name": "Tags",
-          "url": "/tags"
-        },
-        {
-          "name": "Elements",
-          "url": "/elements"
-        },
-        {
-          "name": "Privacy Policy",
-          "url": "/privacy-policy"
-        }
-      ]
     }
   ],
   "footer": [
     {
-      "name": "Elements",
-      "url": "/elements"
+      "name": "Home",
+      "url": "/"
     },
     {
-      "name": "Privacy Policy",
+      "name": "プライバシーポリシー",
       "url": "/privacy-policy"
+    },
+    {
+      "name": "お問い合わせ",
+      "url": "#"
+    },
+    {
+      "name": "プロフィール",
+      "url": "#"
     }
   ]
 }

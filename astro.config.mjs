@@ -28,4 +28,11 @@ export default defineConfig({
     },
     extendDefaultPlugins: true,
   },
+  image: {
+    domains: [
+      'dmt84s1zqsoj0.cloudfront.net',
+      'dummyimage.com'
+    ],
+    remotePatterns: [{ protocol: "https" }],
+  }
 });

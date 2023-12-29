@@ -10,4 +10,4 @@ mv -v golfCourse.json static/data/
 
 node node lib/contentful/fetch.js
 
-npm run build
+astro build

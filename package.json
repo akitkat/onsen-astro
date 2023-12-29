@@ -2,7 +2,7 @@
   "name": "onsen-astro",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "./build.sh",
     "format": "prettier -w ."
   },
   "dependencies": {

@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import HotelMediaItem from './HotelMediaItem.astro';
+const hotelImageBaseUrl = import.meta.env.HOTEL_IMAGE_BASE_URL;
+const props = Astro.props;
+---
+<div class="flex flex-col">
+  <div>
+    <a href="#" target="_blank" class="no-underline">
+      <h2>xxxxホテル</h2>
+    </a>
+  </div>
+  <div class="flex justify-between mb-2.5 sm:flex-col">
+    <div class="w-full h-64 mt-0 mx-auto overflow-hidden">
+      <a href="#" target="_blank" class="h-64 object-cover">
+        <Image
+          src={ `${hotelImageBaseUrl}/image?w=200&h=250&p=true&rt=1&id=${props.no}` }
+          alt="xxxxホテル"
+          width="200"
+          height="256"
+        />
+      </a>
+    </div>
+    <div class="p-2.5 rounded border-box ml-2.5">
+      <p>{ props.description }</p>
+    </div>
+  </div>
+  <h4>ホテルでお得なプランを見つける</h4>
+  <div class="flex flex-wrap justify-between">
+    <HotelMediaItem></HotelMediaItem>
+    <HotelMediaItem></HotelMediaItem>
+    <HotelMediaItem></HotelMediaItem>
+  </div>
+  <div class="pt-3.5">
+    <table>
+      <tr>
+        <td>住所</td>
+        <td>東京都千代田区千代田1</td>
+      </tr>
+      <tr>
+        <td>アクセス</td>
+        <td>東京駅徒歩1分</td>
+      </tr>
+      <tr>
+        <td>Tel</td>
+        <td>03-1234-5678</td>
+      </tr>
+    </table>
+  </div>
+  <div class="flex justify-around">
+    <a href="#">
+      <button>クーポンを確認する</button>
+    </a>
+    <a href="#">
+      <button>空室を確認する</button>
+    </a>
+  </div>
+</div>

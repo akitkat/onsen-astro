@@ -30,9 +30,9 @@ const hotel = hotels.find(e => e.hotelNo === parseInt(props.no))
   </div>
   <h4>ホテルでお得なプランを見つける</h4>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-    <HotelMediaItem></HotelMediaItem>
-    <HotelMediaItem></HotelMediaItem>
-    <HotelMediaItem></HotelMediaItem>
+    <HotelMediaItem hotel={hotel} />
+    <HotelMediaItem hotel={hotel} />
+    <HotelMediaItem hotel={hotel} />
   </div>
   <div class="pt-3.5">
     <table>

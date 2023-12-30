@@ -28,7 +28,7 @@ const hotel = hotels.find(e => e.hotelNo === parseInt(props.no))
       <p>{ props.description }</p>
     </div>
   </div>
-  <h4>ホテルでお得なプランを見つける</h4>
+  { props.keywords ? <h4>{ `${props.keywords}` }でお得なプランを見つける</h4> : '' }
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
     <HotelMediaItem hotel={hotel} />
     <HotelMediaItem hotel={hotel} />

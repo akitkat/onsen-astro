@@ -42,6 +42,15 @@ const rakutenTravelCouponUrl = `${rakutenTravelBaseUrl}?pc=https%3A%2F%2Fcoupon.
       width="200"
       height="100"
     />
+    { hotel?.yUrl ? <HotelMediaItem
+        hotelName={ hotel?.hotelName }
+        href={ hotel.yUrl }
+        src="/images/jalan.jpg"
+        alt="じゃらん"
+        width="100"
+        height="45"
+      /> : ''
+     }
   </div>
   <div class="pt-3.5">
     <table>

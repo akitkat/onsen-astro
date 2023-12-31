@@ -60,6 +60,15 @@ const rakutenTravelCouponUrl = `${rakutenTravelBaseUrl}?pc=https%3A%2F%2Fcoupon.
         height="60"
       /> : ''
      }
+    { hotel?.iUrl ? <HotelMediaItem
+        hotelName={ hotel?.hotelName }
+        href={ hotel.iUrl }
+        src="/images/ikyu.jpg"
+        alt="一休.com"
+        width="89"
+        height="49"
+      /> : ''
+     }
   </div>
   <div class="pt-3.5">
     <table>

@@ -42,27 +42,27 @@ const rakutenTravelCouponUrl = `${rakutenTravelBaseUrl}?pc=https%3A%2F%2Fcoupon.
       width="200"
       height="100"
     />
-    { hotel?.jUrl ? <HotelMediaItem
+    { hotel?.jUrl !== 'NULL' <HotelMediaItem
         hotelName={ hotel?.hotelName }
-        href={ hotel.jUrl }
+        href={ hotel?.jUrl }
         src="/images/jalan.jpg"
         alt="じゃらん"
         width="100"
         height="45"
       /> : ''
      }
-    { hotel?.yUrl ? <HotelMediaItem
+    { hotel?.yUrl !== 'NULL' ? <HotelMediaItem
         hotelName={ hotel?.hotelName }
-        href={ hotel.yUrl }
+        href={ hotel?.yUrl }
         src="/images/yahoo_travel.jpg"
         alt="Yahoo!トラベル"
         width="120"
         height="60"
       /> : ''
      }
-    { hotel?.iUrl ? <HotelMediaItem
+    { hotel?.iUrl !== 'NULL' ? <HotelMediaItem
         hotelName={ hotel?.hotelName }
-        href={ hotel.iUrl }
+        href={ hotel?.iUrl }
         src="/images/ikyu.jpg"
         alt="一休.com"
         width="89"

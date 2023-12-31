@@ -3,21 +3,21 @@ import { Image } from "astro:assets";
 const props = Astro.props;
 ---
 <div class="rounded border-solid border-2 border-gray-400">
-  <a href="#" class="no-underline">
+  <a href={ props.href } class="no-underline" target="_blank">
     <div class="table w-full box-border table-fixed py-2.5 px-3.5"> 
-      <h4 class="font-bold text-sm table-cell align-middle text-slate-700">{ props.hotel.hotelName }のプランを見る</h4>
+      <h4 class="font-bold text-sm table-cell align-middle text-slate-700">{ props.hotelName }のプランを見る</h4>
     </div>
     <div class="grid mb-2.5 grid-cols-2 gap-2">
       <div class="w-20">
         <Image
           class="m-0"
-          src="/images/rakuten_travel.jpg"
-          alt="楽天トラベル"
-          width={ 200 }
-          height={ 100 }
+          src={ props.src }
+          alt={ props.alt }
+          width={ props.width }
+          height={ props.height }
         />
       </div>
-      { props.hotel.price ? <span class="my-auto mx-0 font-bold">最安値 { parseInt(props.hotel.price).toLocaleString() } 円～</span> : '' }
+      { props.price ? <span class="my-auto mx-0 font-bold">最安値 { parseInt(props.price).toLocaleString() } 円～</span> : '' }
     </div>
   </a>
 </div>

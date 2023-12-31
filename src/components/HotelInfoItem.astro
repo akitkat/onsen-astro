@@ -33,9 +33,15 @@ const rakutenTravelCouponUrl = `${rakutenTravelBaseUrl}?pc=https%3A%2F%2Fcoupon.
   </div>
   { props.keywords ? <h4>{ `${props.keywords}` }でお得なプランを見つける</h4> : '' }
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-    <HotelMediaItem hotel={hotel} />
-    <HotelMediaItem hotel={hotel} />
-    <HotelMediaItem hotel={hotel} />
+    <HotelMediaItem
+      hotelName={ hotel?.hotelName }
+      href={ rakutenTravelUrl }
+      price={ hotel?.price }
+      src="/images/rakuten_travel.jpg"
+      alt="楽天トラベル"
+      width="200"
+      height="100"
+    />
   </div>
   <div class="pt-3.5">
     <table>

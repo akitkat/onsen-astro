@@ -1,10 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import golfCourses from '../../static/data/golfCourses.json';
-const rakutenTravelBaseUrl = import.meta.env.RAKUTEN_TRAVEL_BASE_URL;
 const props = Astro.props;
 const golfCourse = golfCourses.find(e => e.golfCourseId === parseInt(props.id))
-const rakutenTravelUrl = `${rakutenTravelBaseUrl}?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2FHOTEL%2F${props.no}`
 ---
 <div class="flex flex-col">
   <div>

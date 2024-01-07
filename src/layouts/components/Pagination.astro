@@ -4,11 +4,6 @@ const { section, currentPage, totalPages } = Astro.props;
 const indexPageLink = currentPage === 2;
 const hasPrevPage = currentPage > 1;
 const hasNextPage = totalPages > currentPage;
-
-let pageList = [];
-for (let i = 1; i <= totalPages; i++) {
-  pageList.push(i);
-}
 ---
 
 {
@@ -56,30 +51,6 @@ for (let i = 1; i <= totalPages; i++) {
             />
           </svg>
         </span>
-      )}
-
-      {/* page index */}
-      {pageList.map((pagination, i) =>
-        pagination === currentPage ? (
-          <span
-            aria-current="page"
-            class={`border border-primary bg-primary rounded-md h-10 w-10 leading-[35px] font-semibold text-white`}
-          >
-            {pagination}
-          </span>
-        ) : (
-          <a
-            href={
-              i === 0
-                ? `${section ? "/" + section : "/"}`
-                : `${section ? "/" + section : ""}/page/${pagination}`
-            }
-            aria-current="page"
-            class={`border border-primary hover:bg-primary hover:text-white rounded-md h-10 w-10 leading-[36px] font-semibold text-dark flex items-center justify-center transition duration-200`}
-          >
-            {pagination}
-          </a>
-        )
       )}
 
       {/* next page */}

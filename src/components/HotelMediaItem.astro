@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 const props = Astro.props;
 ---
 <div class="rounded border-solid border-2 border-gray-400">
-  <a href={ props.href } class="no-underline" target="_blank">
+  <a href={ props.href } class="no-underline" target="_blank" rel="noopener noreferrer nofollow">
     <div class="table w-full box-border table-fixed p-2"> 
       <h4 class="font-bold text-sm table-cell align-middle text-slate-700">{ props.hotelName }のプランを見る</h4>
     </div>

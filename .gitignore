@@ -25,3 +25,5 @@ package-lock.json
 .astro
 
 src/content/posts
+
+static/data

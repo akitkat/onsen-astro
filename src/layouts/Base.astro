@@ -14,10 +14,11 @@ export interface Props {
   image?: string;
   noindex?: boolean;
   canonical?: string;
+  amp_url?: string;
 }
 
 // distructure frontmatters
-const { title, meta_title, description, image, noindex, canonical } =
+const { title, meta_title, description, image, noindex, canonical, amp_url } =
   Astro.props;
 ---
 
@@ -56,6 +57,7 @@ const { title, meta_title, description, image, noindex, canonical } =
 
     <!-- canonical url -->
     {canonical && <link rel="canonical" href={canonical} item-prop="url" />}
+    {amp_url && <link rel="amphtml" href={amp_url} />}
 
     <!-- noindex robots -->
     {noindex && <meta name="robots" content="noindex,nofollow" />}

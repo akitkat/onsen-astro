@@ -16,7 +16,11 @@ export default defineConfig({
     config: {
       applyBaseStyles: false
     }
-  }), mdx(), partytown()],
+  }), mdx(), partytown({
+    config: {
+      forward: ['dataLayer.push'],
+    },
+  })],
   markdown: {
     remarkPlugins: [],
     shikiConfig: {

@@ -110,19 +110,8 @@ const { title, meta_title, description, image, noindex, canonical, amp_url } =
       )}
     />
 
-    <!-- og-image -->
-    <meta
-      property="og:image"
-      content={image ? image : config.metadata.meta_image}
-    />
-
-    <!-- twitter-image -->
-    <meta
-      name="twitter:image"
-      content={`${config.site.base_url}${
-        image ? image : config.metadata.meta_image
-      }`}
-    />
+    <meta property="og:image" content={image ? image : config.metadata.meta_image}/>
+    <meta name="twitter:image" content={image ? image : config.metadata.meta_image} />
     <meta name="twitter:card" content="summary_large_image" />
 
     <script type="text/javascript">

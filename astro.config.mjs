@@ -18,7 +18,7 @@ export default defineConfig({
     }
   }), mdx(), partytown({
     config: {
-      forward: ['dataLayer.push'],
+      forward: ["dataLayer.push"],
     },
   })],
   markdown: {

@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "./build.sh",
-    "format": "prettier -w ."
+    "format": "prettier -w .",
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/mdx": "^2.0.1",

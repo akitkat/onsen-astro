@@ -27,4 +27,6 @@ find ./ -type f ! -name "*.html" -delete
 # delete empty folders
 find ./ -type d -empty -delete
 
+cd ../../
+
 node ampify.mjs

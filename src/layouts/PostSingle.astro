@@ -30,13 +30,13 @@ const { title, description, image, date, tags } =
             <>
             <ul>
               {
-                tags.map((category: string, i: number) => (
+                tags.map((tag: string, i: number) => (
                   <li class="inline-block">
                     <a
-                      href={`/tags/${slugify(category)}`}
+                      href={`/tags/${slugify(tag)}`}
                       class="mr-2 hover:text-primary font-medium"
                     >
-                      {humanize(category)}{i !== post.data.tags.length - 1 && ","}
+                      {humanize(tag)}{i !== post.data.tags.length - 1 && ","}
                     </a>
                   </li>
                 ))

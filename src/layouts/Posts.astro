@@ -33,13 +33,13 @@ const { className, posts, fluid } = Astro.props;
             <BiCategoryAlt className="mr-1 h-[18px] w-[18px] text-gray-600" />
             <>
               <ul>
-                {post.data.categories.map((category: string, i: number) => (
+                {post.data.tags.map((tag: string, i: number) => (
                   <li class="inline-block">
                     <a
-                      href={`/categories/${slugify(category)}`}
+                      href={`/tags/${slugify(tag)}`}
                       class="mr-2 hover:text-primary font-medium"
                     >
-                      {humanize(category)}{i !== post.data.categories.length - 1 && ","}
+                      {humanize(tag)}{i !== post.data.tags.length - 1 && ","}
                     </a>
                   </li>
                 ))}

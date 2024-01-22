@@ -26,6 +26,26 @@ const { page } = Astro.props;
 const { slug } = page;
 const ampUrl = `${config.site.base_url}/amp/${slug}`;
 const { title, meta_title, description, image, date, date_modified } = page.data;
+const jsonLd = {
+  "@context" : "http://schema.org",
+  "@type" : "Article",
+  "author" : {
+    "@type" : "Person",
+    "name" : "akitkat"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": config.metadata.meta_author,
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://on-sen.work/icons/icon-144x144.png"
+    }
+  },
+  "headline": title,
+  "datePublished" : date,
+  "dateModified": date_modified,
+  "image" : image,
+}
 ---
 
 <Base
@@ -34,8 +54,7 @@ const { title, meta_title, description, image, date, date_modified } = page.data
   description={description}
   image={image}
   amp_url={ampUrl}
-  date_published={date}
-  date_modified={date_modified}
+  json_ld={jsonLd}
 >
   {
     postsSlug.includes(page.slug) ? (

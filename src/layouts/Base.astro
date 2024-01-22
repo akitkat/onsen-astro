@@ -15,34 +15,12 @@ export interface Props {
   noindex?: boolean;
   canonical?: string;
   amp_url?: string;
-  date_published?: Date;
-  date_modified?: Date;
+  json_ld?: object;
 }
 
 // distructure frontmatters
-const { title, meta_title, description, image, noindex, canonical, amp_url, date_published, date_modified } =
+const { title, meta_title, description, image, noindex, canonical, amp_url, json_ld } =
   Astro.props;
-
-const jsonLd = {
-  "@context" : "http://schema.org",
-  "@type" : "Article",
-  "author" : {
-    "@type" : "Person",
-    "name" : "akitkat"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": config.metadata.meta_author,
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://on-sen.work/icons/icon-144x144.png"
-    }
-  },
-  "headline": title,
-  // "datePublished" : date_published,
-  // "dateModified": date_modified,
-  "image" : image,
-}
 ---
 
 <!DOCTYPE html>
@@ -148,7 +126,7 @@ const jsonLd = {
       gtag('js', new Date());
       gtag('config', 'G-R6LV8056Y0');
     </script>
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}/>
+    {json_ld && <script type="application/ld+json" set:html={JSON.stringify(json_ld)}/>}
   </head>
   <body>
     <TwSizeIndicator />

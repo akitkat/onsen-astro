@@ -2,6 +2,7 @@
 import config from "@config/config.json";
 import menu from "@config/menu.json";
 import { markdownify } from "@lib/utils/textConverter";
+const contactUrl = import.meta.env.CONTACT_URL;
 ---
 
 <footer class="section bg-theme-dark">
@@ -17,6 +18,11 @@ import { markdownify } from "@lib/utils/textConverter";
           </li>
         ))
       }
+      <li class="inline-block">
+        <a href={contactUrl} class="p-4 text-white/75 hover:text-white transition-all" target="_blank" rel="noopener noreferrer nofollow">
+          お問い合わせ
+        </a>
+      </li>
     </ul>
     <p set:html={markdownify(config.params.copyright)} class="text-white/75" />
   </div>

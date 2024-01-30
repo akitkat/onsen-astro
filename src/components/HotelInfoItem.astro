@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import HotelMediaItem from './HotelMediaItem.astro';
 import hotels from '../../static/data/hotels.json';
-const hotelImageBaseUrl = import.meta.env.HOTEL_IMAGE_BASE_URL;
 const rakutenTravelBaseUrl = import.meta.env.RAKUTEN_TRAVEL_BASE_URL;
 const props = Astro.props;
 const hotel = hotels.find(e => e.hotelNo === parseInt(props.no))

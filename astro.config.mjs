@@ -4,7 +4,6 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
 import config from "./src/config/config.json";
-
 import partytown from "@astrojs/partytown";
 
 // https://astro.build/config

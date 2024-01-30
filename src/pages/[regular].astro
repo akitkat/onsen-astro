@@ -6,6 +6,7 @@ import { getSinglePage } from "@lib/contentParser.astro";
 import config from "../config/config.json";
 
 const siteBaseUrl = import.meta.env.SITE_BASE_URL;
+const siteTitle = import.meta.env.SITE_TITLE;
 const getPosts = await getSinglePage("posts");
 const postsSlug = getPosts.map((item) => item.slug);
 
@@ -36,7 +37,7 @@ const jsonLd = {
   },
   "publisher": {
     "@type": "Organization",
-    "name": config.metadata.meta_author,
+    "name": siteTitle,
     "logo": {
       "@type": "ImageObject",
       "url": "https://on-sen.work/icons/icon-144x144.png"

@@ -7,6 +7,7 @@ import Header from "@partials/Header.astro";
 import "@styles/style.scss";
 
 const siteBaseUrl = import.meta.env.SITE_BASE_URL;
+const siteTitle = import.meta.env.SITE_TITLE;
 
 // types for frontmatters
 export interface Props {
@@ -76,7 +77,7 @@ const { title, meta_title, description, image, noindex, canonical, amp_url, json
     />
 
     <!-- author from config.json -->
-    <meta name="author" content={config.metadata.meta_author} />
+    <meta name="author" content={siteTitle} />
 
     <!-- og-title -->
     <meta

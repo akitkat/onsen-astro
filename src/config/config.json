@@ -1,6 +1,5 @@
 {
   "site": {
-    "base_url": "https://onsen-astro.pages.dev",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png"
@@ -12,7 +11,6 @@
   },
 
   "metadata": {
-    "meta_author": "日本温泉百貨",
     "meta_image": "/images/og-image.png",
     "meta_description": "日本各地の温泉情報満載！こころもからだも温泉でリフレッシュ！"
   },

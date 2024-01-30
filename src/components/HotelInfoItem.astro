@@ -42,7 +42,7 @@ const rakutenTravelCouponUrl = `${rakutenTravelBaseUrl}?pc=https%3A%2F%2Fcoupon.
     />
     { hotel?.jUrl !== 'NULL' ? <HotelMediaItem
         hotelName={ hotel?.hotelName }
-        href={ hotel?.jUrl }
+        href={ `https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3599199&pid=890059847&vc_url=${hotel?.jUrl}` }
         src="/images/jalan.jpg"
         alt="じゃらん"
         width="100"
@@ -51,7 +51,7 @@ const rakutenTravelCouponUrl = `${rakutenTravelBaseUrl}?pc=https%3A%2F%2Fcoupon.
      }
     { hotel?.yUrl !== 'NULL' ? <HotelMediaItem
         hotelName={ hotel?.hotelName }
-        href={ hotel?.yUrl }
+        href={ `https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3599199&pid=887316004&vc_url=${hotel?.yUrl}` }
         src="/images/yahoo_travel.jpg"
         alt="Yahoo!トラベル"
         width="120"
@@ -60,7 +60,7 @@ const rakutenTravelCouponUrl = `${rakutenTravelBaseUrl}?pc=https%3A%2F%2Fcoupon.
      }
     { hotel?.iUrl !== 'NULL' ? <HotelMediaItem
         hotelName={ hotel?.hotelName }
-        href={ hotel?.iUrl }
+        href={ `https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3599199&pid=887319524&vc_url=${hotel?.iUrl}` }
         src="/images/ikyu.jpg"
         alt="一休.com"
         width="89"

@@ -6,6 +6,8 @@ import Footer from "@partials/Footer.astro";
 import Header from "@partials/Header.astro";
 import "@styles/style.scss";
 
+const siteBaseUrl = import.meta.env.SITE_BASE_URL;
+
 // types for frontmatters
 export interface Props {
   title?: string;
@@ -94,7 +96,7 @@ const { title, meta_title, description, image, noindex, canonical, amp_url, json
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content={`${config.site.base_url}/${Astro.url.pathname.replace("/", "")}`}
+      content={`${siteBaseUrl}/${Astro.url.pathname.replace("/", "")}`}
     />
 
     <!-- twitter-title -->

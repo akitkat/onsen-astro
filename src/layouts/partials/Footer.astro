@@ -3,6 +3,8 @@ import config from "@config/config.json";
 import menu from "@config/menu.json";
 import { markdownify } from "@lib/utils/textConverter";
 const contactUrl = import.meta.env.CONTACT_URL;
+const copyright = import.meta.env.COPYRIGHT;
+
 ---
 
 <footer class="section bg-theme-dark">
@@ -24,6 +26,6 @@ const contactUrl = import.meta.env.CONTACT_URL;
         </a>
       </li>
     </ul>
-    <p set:html={markdownify(config.params.copyright)} class="text-white/75" />
+    <p set:html={markdownify(copyright)} class="text-white/75" />
   </div>
 </footer>

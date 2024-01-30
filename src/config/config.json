@@ -1,6 +1,5 @@
 {
   "site": {
-    "title": "日本温泉百貨",
     "base_url": "https://onsen-astro.pages.dev",
     "base_path": "/",
     "trailing_slash": false,

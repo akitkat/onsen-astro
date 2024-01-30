@@ -18,6 +18,8 @@ export interface Props {
   json_ld?: object;
 }
 
+const siteTitle = import.meta.env.SITE_TITLE;
+
 // distructure frontmatters
 const { title, meta_title, description, image, noindex, canonical, amp_url, json_ld } =
   Astro.props;
@@ -53,7 +55,7 @@ const { title, meta_title, description, image, noindex, canonical, amp_url, json
 
     <!-- title -->
     <title>
-      {plainify(meta_title ? meta_title : title ? title : config.site.title)}
+      {plainify(meta_title ? meta_title : title ? title : siteTitle)}
     </title>
 
     <!-- canonical url -->
@@ -78,7 +80,7 @@ const { title, meta_title, description, image, noindex, canonical, amp_url, json
     <meta
       property="og:title"
       content={plainify(
-        meta_title ? meta_title : title ? title : config.site.title
+        meta_title ? meta_title : title ? title : siteTitle
       )}
     />
 
@@ -99,7 +101,7 @@ const { title, meta_title, description, image, noindex, canonical, amp_url, json
     <meta
       name="twitter:title"
       content={plainify(
-        meta_title ? meta_title : title ? title : config.site.title
+        meta_title ? meta_title : title ? title : siteTitle
       )}
     />
 

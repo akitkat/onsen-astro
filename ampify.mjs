@@ -40,12 +40,8 @@ const edit = async (file, urlPath) => {
 
   $('head')
     .append('<script async src="https://cdn.ampproject.org/v0.js"></script>')
-    .append('<script async custom-element="amp-link-rewriter" src="https://cdn.ampproject.org/v0/amp-link-rewriter-0.1.js"></script>')
     .find('link[rel="amphtml"], link[rel="canonical"], link[as="script"]')
     .remove();
-
-  $('body')
-    .append('<amp-link-rewriter layout="nodisplay"><script type="application/json">{"output": "https://lsr.valuecommerce.com/ard?p=${vc_pid}&u=${href}&vcptn=${vc_ptn}&s=SOURCE_URL&r=DOCUMENT_REFERRER","vars": { "vc_pid": "887349817", "vc_ptn": "ampls" }}</script></amp-link-rewriter>')
 
   $('noscript').remove();
   $('html').attr('amp', '');

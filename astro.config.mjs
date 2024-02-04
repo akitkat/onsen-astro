@@ -46,6 +46,7 @@ export default defineConfig({
     }]
   },
   redirects: {
+    '/sitemap/sitemap-index.xml': '/sitemap-index.xml',
     '/2': '/page/2',
     '/3': '/page/3',
     '/4': '/page/4',

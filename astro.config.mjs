@@ -6,11 +6,9 @@ import { defineConfig } from "astro/config";
 import config from "./src/config/config.json";
 import partytown from "@astrojs/partytown";
 
-const siteBaseUrl = import.meta.env.SITE_BASE_URL;
-
 // https://astro.build/config
 export default defineConfig({
-  site: siteBaseUrl ? siteBaseUrl : "http://examplesite.com",
+  site: process.env.SITE_BASE_URL,
   base: config.site.base_path ? config.site.base_path : "/",
   trailingSlash: config.site.trailing_slash ? "always" : "never",
   integrations: [

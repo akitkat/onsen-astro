@@ -43,6 +43,9 @@ export default defineConfig({
       protocol: "https"
     }]
   },
+  experimental: {
+    contentCollectionCache: true,
+  },
   redirects: {
     '/sitemap/sitemap-index.xml': '/sitemap-index.xml',
     '/sitemap/sitemap-0.xml': '/sitemap-0.xml',

@@ -86,3 +86,11 @@
     Header append Vary: Accept-Encoding
   </FilesMatch>
 </IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteBase /
+  RewriteRule sitemap/sitemap-index.xml sitemap-index.xml [R=301,L]
+  RewriteRule sitemap/sitemap-0.xml sitemap-0.xml [R=301,L]
+  RewriteRule ^([0-9]+)$ page/$1 [R=301,L]
+</IfModule>

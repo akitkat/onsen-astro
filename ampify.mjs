@@ -66,10 +66,6 @@ const edit = async (file, urlPath) => {
   });
   $('amp-img[data-main-image]').removeAttr('data-main-image')
 
-  $('.gatsby-image-wrapper-constrained > div').each(function () {
-    $(this).remove()
-  })
-
   $('.main-pane amp-img, .page amp-img').each(function () {
     if ($(this).attr('data-layout')) {
       $(this).attr('layout', $(this).attr('data-layout'));
@@ -103,8 +99,7 @@ const edit = async (file, urlPath) => {
     pictures.children('source').remove();
     pictures.each((_, element) => {
       $(element).find('amp-img')
-        .removeAttr('sizes')
-        .removeAttr('data-gatsby-image-ssr');
+        .removeAttr('sizes');
       const ampImg = $(element).html().trim();
       $(element).replaceWith(ampImg);
     });

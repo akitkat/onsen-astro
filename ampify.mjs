@@ -131,7 +131,7 @@ const edit = async (file, urlPath) => {
 
   const files = await globby("dist/_astro/*.css");
   const css = files.map((file) => fs.readFileSync(file, 'utf8'))
-  $('head').prepend(`<style amp-custom>${css}</style>`);
+  $('head').prepend(`<style amp-custom>amp-img img{margin:0!important};${css}</style>`);
   $('head').prepend('<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>');
   return $.html();
 }

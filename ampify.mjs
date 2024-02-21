@@ -54,8 +54,9 @@ const edit = async (file, urlPath) => {
   $('link[rel=stylesheet]').remove();
   // $('*').removeAttr('style');
 
-  $('img, video, iframe').each(function () {
+  $('img').each(function () {
     this.name = 'amp-' + this.name;
+    $(this).addClass('not-prose')
   });
 
   $('amp-img[data-src], amp-img[data-srcset]').each(function () {

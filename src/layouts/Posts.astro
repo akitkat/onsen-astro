@@ -36,7 +36,7 @@ const { className, posts, fluid } = Astro.props;
                 {post.data.tags.map((tag: string, i: number) => (
                   <li class="inline-block">
                     <a
-                      href={`/tags/${slugify(tag)}`}
+                      href={`/tags/${slugify(tag)}/`}
                       class="mr-2 hover:text-primary font-medium"
                     >
                       {humanize(tag)}{i !== post.data.tags.length - 1 && ","}

@@ -10,7 +10,7 @@ import partytown from "@astrojs/partytown";
 export default defineConfig({
   site: process.env.SITE_BASE_URL,
   base: config.site.base_path ? config.site.base_path : "/",
-  trailingSlash: config.site.trailing_slash ? "always" : "never",
+  trailingSlash: "always",
   integrations: [
     react(),
     sitemap({
@@ -44,6 +44,6 @@ export default defineConfig({
     }]
   },
   experimental: {
-    contentCollectionCache: true,
+    contentCollectionCache: false,
   },
 });

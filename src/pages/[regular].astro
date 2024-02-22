@@ -26,7 +26,7 @@ export async function getStaticPaths() {
 
 const { page } = Astro.props;
 const { slug } = page;
-const ampUrl = `${siteBaseUrl}/amp/${slug}`;
+const ampUrl = `${siteBaseUrl}/amp/${slug}/`;
 const { title, meta_title, description, image, date, date_modified } = page.data;
 const jsonLd = {
   "@context" : "http://schema.org",

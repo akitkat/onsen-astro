@@ -52,7 +52,6 @@ const edit = async (file, urlPath) => {
   }
 
   $('link[rel=stylesheet]').remove();
-  // $('*').removeAttr('style');
 
   $('img').each(function () {
     this.name = 'amp-' + this.name;
@@ -67,22 +66,8 @@ const edit = async (file, urlPath) => {
   });
   $('amp-img[data-main-image]').removeAttr('data-main-image')
 
-  $('.main-pane amp-img, .page amp-img').each(function () {
-    if ($(this).attr('data-layout')) {
-      $(this).attr('layout', $(this).attr('data-layout'));
-    } else {
-      if ($(this).attr('width') > 700) {
-        $(this).attr('layout', 'responsive');
-      } else {
-        $(this).attr('layout', 'fixed');
-      }
-    }
-  });
-
   // Google Analytics
   $('head').append('<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>');
-  $('amp-analytics').remove();
-
   $('body').prepend(`<amp-analytics type="googleanalytics" config="https://amp.analytics-debugger.com/ga4.json" data-credentials="include"><script type="application/json">${JSON.stringify(googleAnalyticsGa4)}</script></amp-analytics>`);
 
   $('amp-img').attr('layout', 'responsive');
@@ -92,8 +77,6 @@ const edit = async (file, urlPath) => {
   $('meta').removeAttr('httpequiv');
   $('section').removeAttr('height');
   $('head').append(`<link rel="canonical" href="https://on-sen.work/${urlPath.split`/`[1]}/">`)
-
-  $('#shareButtonList').remove()
 
   const pictures = $('picture');
   if (pictures.length > 0) {
@@ -122,11 +105,9 @@ const edit = async (file, urlPath) => {
             $(item).replaceWith(ampImg);
           } catch (e) {
             console.error(e);
-            console.log($(item).attr('src'));
           }
         }
       }
-
     }
   })();
 

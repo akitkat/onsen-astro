@@ -28,32 +28,6 @@ const { page } = Astro.props;
 const { slug } = page;
 const ampUrl = `${siteBaseUrl}/amp/${slug}/`;
 const { title, meta_title, description, image, date, date_modified, tags } = page.data;
-console.log(tags[0]);
-const breadCrumbs = {
-  "@context":"https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": siteBaseUrl
-    },
-  ]
-}
-if (tags[0] !== '') {
-  breadCrumbs['itemListElement'].push({
-    "@type": "ListItem",
-    "position": 2,
-    "name": tags[0],
-    "item": `${siteBaseUrl}/tags/${tags[0]}/`
-  })
-}
-breadCrumbs['itemListElement'].push({
-  "@type": "ListItem",
-  "position": 3,
-  "name": title
-})
 const jsonLd = [
   {
     "@context" : "http://schema.org",
@@ -75,8 +49,37 @@ const jsonLd = [
     "dateModified": date_modified,
     "image" : image,
   },
-  breadCrumbs
 ]
+
+const breadCrumbs = {
+  "@context":"https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "name": "Home",
+      "item": siteBaseUrl
+    },
+  ]
+}
+
+if (postsSlug.includes(page.slug)) {
+  if (tags !== undefined && tags[0]) {
+    breadCrumbs['itemListElement'].push({
+      "@type": "ListItem",
+      "name": tags[0],
+      "item": `${siteBaseUrl}/tags/${tags[0]}/`
+    })
+  }
+  breadCrumbs['itemListElement'].push({
+    "@type": "ListItem",
+    "name": title
+  })
+  breadCrumbs['itemListElement'].forEach((item, index) => {
+    item['position'] = index + 1;
+  })
+  jsonLd.push(breadCrumbs);
+}
 ---
 
 <Base
@@ -85,7 +88,7 @@ const jsonLd = [
   description={description}
   image={image}
   amp_url={ampUrl}
-  json_ld={postsSlug.includes(page.slug) ? jsonLd : {}}
+  json_ld={jsonLd}
 >
   {
     postsSlug.includes(page.slug) ? (

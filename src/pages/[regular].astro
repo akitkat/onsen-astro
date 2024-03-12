@@ -27,27 +27,56 @@ export async function getStaticPaths() {
 const { page } = Astro.props;
 const { slug } = page;
 const ampUrl = `${siteBaseUrl}/amp/${slug}/`;
-const { title, meta_title, description, image, date, date_modified } = page.data;
-const jsonLd = {
-  "@context" : "http://schema.org",
-  "@type" : "Article",
-  "author" : {
-    "@type" : "Person",
-    "name" : "akitkat"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": siteTitle,
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://on-sen.work/icons/icon-144x144.png"
-    }
-  },
-  "headline": title,
-  "datePublished" : date,
-  "dateModified": date_modified,
-  "image" : image,
+const { title, meta_title, description, image, date, date_modified, tags } = page.data;
+console.log(tags[0]);
+const breadCrumbs = {
+  "@context":"https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteBaseUrl
+    },
+  ]
 }
+if (tags[0] !== '') {
+  breadCrumbs['itemListElement'].push({
+    "@type": "ListItem",
+    "position": 2,
+    "name": tags[0],
+    "item": `${siteBaseUrl}/tags/${tags[0]}/`
+  })
+}
+breadCrumbs['itemListElement'].push({
+  "@type": "ListItem",
+  "position": 3,
+  "name": title
+})
+const jsonLd = [
+  {
+    "@context" : "http://schema.org",
+    "@type" : "Article",
+    "author" : {
+      "@type" : "Person",
+      "name" : "akitkat"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": siteTitle,
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://on-sen.work/icons/icon-144x144.png"
+      }
+    },
+    "headline": title,
+    "datePublished" : date,
+    "dateModified": date_modified,
+    "image" : image,
+  },
+  breadCrumbs
+]
 ---
 
 <Base
@@ -56,7 +85,7 @@ const jsonLd = {
   description={description}
   image={image}
   amp_url={ampUrl}
-  json_ld={jsonLd}
+  json_ld={postsSlug.includes(page.slug) ? jsonLd : {}}
 >
   {
     postsSlug.includes(page.slug) ? (

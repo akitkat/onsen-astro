@@ -87,7 +87,7 @@ if (postsSlug.includes(page.slug)) {
   meta_title={meta_title}
   description={description}
   image={image}
-  amp_url={ampUrl}
+  amp_url={postsSlug.includes(page.slug) ? ampUrl : ''}
   json_ld={jsonLd}
 >
   {

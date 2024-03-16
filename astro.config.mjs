@@ -41,8 +41,7 @@ export default defineConfig({
   image: {
     remotePatterns: [{
       protocol: "https"
-    }],
-    domains: ["img.felmat.net"]
+    }]
   },
   experimental: {
     contentCollectionCache: false,

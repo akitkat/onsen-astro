@@ -29,7 +29,7 @@ const rakutenTravelCouponUrl = `${rakutenTravelBaseUrl}?pc=https%3A%2F%2Fcoupon.
       <p>{ props.description }</p>
     </div>
   </div>
-  { props.keywords ? <h4>{ `${props.keywords}` }でお得なプランを見つける</h4> : '' }
+  { props.keywords ? <h3>{ `${props.keywords}` }でお得なプランを見つける</h3> : '' }
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
     <HotelMediaItem
       hotelName={ hotel?.hotelName }

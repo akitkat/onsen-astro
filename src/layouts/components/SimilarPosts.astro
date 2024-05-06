@@ -44,11 +44,9 @@ const { posts } = Astro.props;
             </>
           </li>
         </ul>
-        <h3 class="h5">
-          <a href={`/${post.slug}/`} class="block hover:text-primary transition duration-300">
-            {post.data.title}
-          </a>
-        </h3>
+        <a href={`/${post.slug}/`} class="block hover:text-primary transition duration-300">
+          <h2 class="h5">{post.data.title}</h2>
+        </a>
       </div>
     ))
   }

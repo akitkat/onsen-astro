@@ -1,18 +1,11 @@
 const dateFormat = (datetime: string | Date) => {
   const dateTime = new Date(datetime);
 
-  const date = dateTime.toLocaleDateString([], {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const year = dateTime.getFullYear();
+  const month = String(dateTime.getMonth() + 1).padStart(2, '0');
+  const day = String(dateTime.getDate()).padStart(2, '0');
 
-  const time = dateTime.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-
-  return date;
+  return `${year}-${month}-${day}`;
 };
 
 export default dateFormat;

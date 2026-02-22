@@ -119,12 +119,25 @@ const { title, meta_title, description, image, noindex, canonical, amp_url, json
     <meta name="twitter:image" content={image ? image : config.metadata.meta_image} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsGa4}`}></script>
+    <!-- GA4: 遅延読み込みで LCP/FCP への影響を軽減 -->
     <script define:vars={{ googleAnalyticsGa4 }}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', googleAnalyticsGa4);
+      function loadGtag() {
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + googleAnalyticsGa4;
+        document.head.appendChild(s);
+        gtag('js', new Date());
+        gtag('config', googleAnalyticsGa4);
+      }
+      if (document.readyState === 'complete') {
+        requestIdleCallback ? requestIdleCallback(loadGtag, { timeout: 2000 }) : setTimeout(loadGtag, 1);
+      } else {
+        window.addEventListener('load', function () {
+          requestIdleCallback ? requestIdleCallback(loadGtag, { timeout: 2000 }) : setTimeout(loadGtag, 1);
+        });
+      }
     </script>
     {json_ld && <script type="application/ld+json" set:html={JSON.stringify(json_ld)}/>}
     <link rel="sitemap" href="/sitemap-index.xml" />

@@ -25,8 +25,6 @@ export async function getStaticPaths() {
 }
 
 const { page } = Astro.props;
-const { slug } = page;
-const ampUrl = `${siteBaseUrl}/amp/${slug}/`;
 const { title, meta_title, description, image, date, date_modified, tags } = page.data;
 const jsonLd = [
   {
@@ -87,7 +85,6 @@ if (postsSlug.includes(page.slug)) {
   meta_title={meta_title}
   description={description}
   image={image}
-  amp_url={postsSlug.includes(page.slug) ? ampUrl : ''}
   json_ld={jsonLd}
 >
   {

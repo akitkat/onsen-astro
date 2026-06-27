@@ -10,10 +10,6 @@ export default defineConfig({
   site: process.env.SITE_BASE_URL,
   base: config.site.base_path ? config.site.base_path : "/",
   trailingSlash: "always",
-  // Astro 5: 既存の Content Collections (v2–v4) をそのまま使う
-  legacy: {
-    collections: true,
-  },
   integrations: [
     react(),
     sitemap({

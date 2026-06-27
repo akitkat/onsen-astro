@@ -5,12 +5,13 @@ import { getSinglePage } from "@lib/contentParser.astro";
 import dateFormat from "@lib/utils/dateFormat";
 import similerItems from "@lib/utils/similarItems";
 import { humanize,markdownify,slugify } from "@lib/utils/textConverter";
+import { render } from "astro:content";
 import { BiCalendarEdit,BiCategoryAlt } from "react-icons/bi/index.js";
 
 const posts = await getSinglePage("posts");
 const { post } = Astro.props;
-const similarPosts = similerItems(post, posts, post.slug);
-const { Content } = await post.render();
+const similarPosts = similerItems(post, posts, post.id);
+const { Content } = await render(post);
 const { title, description, image, date, tags } =
   post.data;
 ---

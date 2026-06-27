@@ -8,7 +8,7 @@ import config from "../config/config.json";
 const siteBaseUrl = import.meta.env.SITE_BASE_URL;
 const siteTitle = import.meta.env.SITE_TITLE;
 const getPosts = await getSinglePage("posts");
-const postsSlug = getPosts.map((item) => item.slug);
+const postsSlug = getPosts.map((item) => item.id);
 
 export async function getStaticPaths() {
   const posts = await getSinglePage("posts");
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 
   const paths = allPages.map((page) => ({
     params: {
-      regular: page.slug,
+      regular: page.id,
     },
     props: { page },
   }));
@@ -61,7 +61,7 @@ const breadCrumbs = {
   ]
 }
 
-if (postsSlug.includes(page.slug)) {
+if (postsSlug.includes(page.id)) {
   if (tags !== undefined && tags[0]) {
     breadCrumbs['itemListElement'].push({
       "@type": "ListItem",
@@ -88,7 +88,7 @@ if (postsSlug.includes(page.slug)) {
   json_ld={jsonLd}
 >
   {
-    postsSlug.includes(page.slug) ? (
+    postsSlug.includes(page.id) ? (
       <PostSingle post={page} />
     ) : (
       <Default data={page} />

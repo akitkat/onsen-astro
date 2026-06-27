@@ -29,9 +29,10 @@ const currentPage = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
 const indexOfLastPost = currentPage * config.settings.pagination;
 const indexOfFirstPost = indexOfLastPost - config.settings.pagination;
 const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
+const noindex = currentPage > 1;
 ---
 
-<Base>
+<Base noindex={noindex}>
   <section class="section">
     <div class="container">
       <Posts className="mb-16" posts={currentPosts} />

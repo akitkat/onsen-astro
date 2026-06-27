@@ -3,8 +3,8 @@ import Base from "@layouts/Base.astro";
 import Default from "@layouts/Default.astro";
 import PostSingle from "@layouts/PostSingle.astro";
 import { getSinglePage } from "@lib/contentParser.astro";
+import { getPageUrl } from "@lib/utils/siteUrl";
 import { getImage } from "astro:assets";
-import config from "../config/config.json";
 
 const siteBaseUrl = import.meta.env.SITE_BASE_URL;
 const siteTitle = import.meta.env.SITE_TITLE;
@@ -26,61 +26,68 @@ export async function getStaticPaths() {
 }
 
 const { page } = Astro.props;
-const { title, meta_title, description, image, date, date_modified, tags } = page.data;
-const jsonLd = [
-  {
-    "@context" : "http://schema.org",
-    "@type" : "Article",
-    "author" : {
-      "@type" : "Person",
-      "name" : "akitkat"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": siteTitle,
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${siteBaseUrl}/icons/icon-144x144.png`
-      }
-    },
-    "headline": title,
-    "datePublished" : date,
-    "dateModified": date_modified,
-    "image" : image,
-  },
-]
+const { title, meta_title, description, image, date, tags } = page.data;
+const isPost = postsSlug.includes(page.id);
+const articleUrl = getPageUrl(`/${page.id}/`, siteBaseUrl);
 
-const breadCrumbs = {
-  "@context":"https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+const jsonLd: object[] = [];
+
+if (isPost) {
+  jsonLd.push({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    url: articleUrl,
+    mainEntityOfPage: articleUrl,
+    datePublished: date,
+    dateModified: date,
+    image: image,
+    author: {
+      "@type": "Person",
+      name: "akitkat",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteTitle,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteBaseUrl}/icons/icon-144x144.png`,
+      },
+    },
+  });
+
+  const breadcrumbItems = [
     {
       "@type": "ListItem",
-      "name": "Home",
-      "item": siteBaseUrl
+      position: 1,
+      name: "Home",
+      item: siteBaseUrl,
     },
-  ]
-}
+  ];
 
-if (postsSlug.includes(page.id)) {
-  if (tags !== undefined && tags[0]) {
-    breadCrumbs['itemListElement'].push({
+  if (tags?.[0]) {
+    breadcrumbItems.push({
       "@type": "ListItem",
-      "name": tags[0],
-      "item": `${siteBaseUrl}/tags/${tags[0]}/`
-    })
+      position: 2,
+      name: tags[0],
+      item: `${siteBaseUrl}/tags/${tags[0]}/`,
+    });
   }
-  breadCrumbs['itemListElement'].push({
+
+  breadcrumbItems.push({
     "@type": "ListItem",
-    "name": title
-  })
-  breadCrumbs['itemListElement'].forEach((item, index) => {
-    item['position'] = index + 1;
-  })
-  jsonLd.push(breadCrumbs);
+    position: breadcrumbItems.length + 1,
+    name: title,
+    item: articleUrl,
+  });
+
+  jsonLd.push({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbItems,
+  });
 }
 
-const isPost = postsSlug.includes(page.id);
 let preloadImage: string | undefined;
 if (isPost && image) {
   const optimized = await getImage({ src: image, width: 1000, height: 500 });
@@ -93,14 +100,10 @@ if (isPost && image) {
   meta_title={meta_title}
   description={description}
   image={image}
-  json_ld={jsonLd}
+  json_ld={jsonLd.length > 0 ? jsonLd : undefined}
   preloadImage={preloadImage}
+  ogType={isPost ? "article" : "website"}
+  publishedTime={isPost && date ? date : undefined}
 >
-  {
-    isPost ? (
-      <PostSingle post={page} />
-    ) : (
-      <Default data={page} />
-    )
-  }
+  {isPost ? <PostSingle post={page} /> : <Default data={page} />}
 </Base>

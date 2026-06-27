@@ -16,6 +16,8 @@ export default defineConfig({
       changefreq: "daily",
       priority: 0.7,
       lastmod: new Date(),
+      filter: (page) =>
+        !page.includes("/page/") && !page.includes("/404"),
     }),
     tailwind({
       config: {

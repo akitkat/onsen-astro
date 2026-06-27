@@ -22,9 +22,10 @@ const posts = await getSinglePage("posts");
 const filterByTags = taxonomyFilter(posts, "tags", tag);
 
 const title = humanize(tag || "");
+const description = `「${title}」タグの温泉記事一覧`;
 ---
 
-<Base title={title || "Tag"}>
+<Base title={title || "Tag"} description={description}>
   <div class="section">
     <div class="container">
       <p class="text-center mb-4">Showing Posts From</p>

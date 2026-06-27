@@ -6,9 +6,10 @@ import { humanize } from "@lib/utils/textConverter";
 import { FaHashtag } from "react-icons/fa/index.js";
 
 const tags = await getTaxonomy("posts", "tags");
+const description = "温泉記事のタグ一覧";
 ---
 
-<Base title={"Tags"}>
+<Base title={"Tags"} description={description}>
   <section class="section">
     <div class="container text-center">
       <h1 class="h2 page-heading">Tags</h1>

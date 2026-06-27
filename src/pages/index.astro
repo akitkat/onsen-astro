@@ -6,13 +6,34 @@ import Posts from "@layouts/Posts.astro";
 import { getSinglePage } from "@lib/contentParser.astro";
 import { sortByDate } from "@lib/utils/sortFunctions";
 
+const siteBaseUrl = import.meta.env.SITE_BASE_URL;
+const siteTitle = import.meta.env.SITE_TITLE;
+
 const posts = await getSinglePage("posts");
 const sortedPosts = sortByDate(posts);
 const totalPages = Math.ceil(posts.length / config.settings.pagination);
 const currentPosts = sortedPosts.slice(0, config.settings.pagination);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteTitle,
+  url: siteBaseUrl,
+  publisher: {
+    "@type": "Organization",
+    name: siteTitle,
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteBaseUrl}/icons/icon-144x144.png`,
+    },
+  },
+};
 ---
 
-<Base>
+<Base
+  description={config.metadata.meta_description}
+  json_ld={jsonLd}
+>
   <section class="section">
     <div class="container">
       <Posts posts={currentPosts} className="mb-16" />

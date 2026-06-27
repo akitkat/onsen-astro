@@ -3,6 +3,7 @@ import Base from "@layouts/Base.astro";
 import Default from "@layouts/Default.astro";
 import PostSingle from "@layouts/PostSingle.astro";
 import { getSinglePage } from "@lib/contentParser.astro";
+import { getImage } from "astro:assets";
 import config from "../config/config.json";
 
 const siteBaseUrl = import.meta.env.SITE_BASE_URL;
@@ -78,6 +79,13 @@ if (postsSlug.includes(page.id)) {
   })
   jsonLd.push(breadCrumbs);
 }
+
+const isPost = postsSlug.includes(page.id);
+let preloadImage: string | undefined;
+if (isPost && image) {
+  const optimized = await getImage({ src: image, width: 1000, height: 500 });
+  preloadImage = optimized.src;
+}
 ---
 
 <Base
@@ -86,9 +94,10 @@ if (postsSlug.includes(page.id)) {
   description={description}
   image={image}
   json_ld={jsonLd}
+  preloadImage={preloadImage}
 >
   {
-    postsSlug.includes(page.id) ? (
+    isPost ? (
       <PostSingle post={page} />
     ) : (
       <Default data={page} />

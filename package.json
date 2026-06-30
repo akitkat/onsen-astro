@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "astro dev",
     "build": "./build.sh",
-    "format": "prettier -w .",
     "preview": "astro preview"
   },
   "dependencies": {
@@ -30,9 +29,6 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.6",
     "postcss": "^8.4.20",
-    "prettier": "^3.0.0",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.58.1",

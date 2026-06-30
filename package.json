@@ -1,8 +1,5 @@
 {
   "name": "onsen-astro",
-  "engines": {
-    "node": ">=22.12.0"
-  },
   "scripts": {
     "dev": "astro dev",
     "build": "./build.sh",
